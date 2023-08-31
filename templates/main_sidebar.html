@@ -32,7 +32,7 @@
     <li class="nav-item mb-5">
       <a
         href="{% url 'courses' request.user.id %}"
-        class="nav-link py-3 border-bottom text-dark"
+        class="nav-link py-3 border-bottom text-dark {% if url_name == 'courses' %} active {% endif %}"
         title="My Courses"
         data-bs-toggle="tooltip"
         data-bs-placement="right"
@@ -43,6 +43,22 @@
           class="feather-icon icon-bar-3"
         />
         My Courses
+      </a>
+    </li>
+    <li class="nav-item mb-5">
+      <a
+        href="{% url 'resource-page' request.user.id %}"
+        class="nav-link py-3 border-bottom text-dark {% if url_name == 'resource-page' %} active {% endif %}"
+        title="Resources"
+        data-bs-toggle="tooltip"
+        data-bs-placement="right"
+      >
+        <img
+          src="{% static 'assets/tools.svg' %}"
+          alt="Back"
+          class="feather-icon icon-bar-3"
+        />
+        Resources
       </a>
     </li>
     <li class="nav-item mb-5">
@@ -63,7 +79,7 @@
     </li>
     <li class="nav-item mb-5">
       <a
-      href="{% url 'past-questions' request.user.id %}"
+      href="{% url 'past-questions' %}"
         class="nav-link py-3 border-bottom text-dark {% if url_name == 'past-questions' %} active {% endif %}"
         title="Past Questions"
         data-bs-toggle="tooltip"
@@ -160,6 +176,21 @@
     </li>
     <li class="nav-item mb-5">
       <a
+        href="{% url 'resource-page' request.user.id %}"
+        class="nav-link py-3 border-bottom {% if url_name == 'resource-page' %} active {% endif %}"
+        title="Resources"
+        data-bs-toggle="tooltip"
+        data-bs-placement="right"
+      >
+        <img
+          src="{% static 'assets/tools.svg' %}"
+          alt="Back"
+          class="feather-icon icon-bar-3"
+        />
+      </a>
+    </li>
+    <li class="nav-item mb-5">
+      <a
         href="{% url 'chat-message' %}"
         class="nav-link py-3 border-bottom {% if url_name == 'chat-message' %} active {% endif %}"
         title="Messages"
@@ -175,7 +206,7 @@
     </li>
     <li class="nav-item mb-5">
       <a
-        href="{% url 'past-questions' request.user.id %}"
+        href="{% url 'past-questions' %}"
         class="nav-link py-3 border-bottom {% if url_name == 'past-questions' %} active {% endif %}"
         title="Pass Questions"
         data-bs-toggle="tooltip"

@@ -1,0 +1,13 @@
+{% extends 'main.html' %} {% load static %} {% block title %}Resource{% endblock %} {% block content %}
+<h1>Resources</h1>
+{% include 'course_page/resource_pages/pdf.html' %}
+<br>
+{% include 'course_page/resource_pages/image.html' %}
+<br>
+{% include 'course_page/resource_pages/audio.html' %}
+<br>
+{% include 'course_page/resource_pages/video.html' %}
+<br>
+{% include 'course_page/resource_pages/youtube_link.html' %}
+
+{% endblock %}

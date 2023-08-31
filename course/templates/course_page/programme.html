@@ -1,4 +1,4 @@
-{% extends "main.html" %} {% load static %} {% block title %}{{course.name}}{% endblock %} {% block content %}
+{% extends "main.html" %} {% load static %} {% block title %}COURSE PAGE{% endblock %} {% block content %}
 <div class="container-fluid">
   <div class="row intro text-center">
     <h2 style="text-decoration: underline;" class="fw-bold">{{course.heading}}</h2>
@@ -31,6 +31,14 @@
   </div>
 </div>
 <div class="container-fluid py-3 mx-auto">
-  {% include 'course_page/pdf.html' %}
+{% include 'course_page/resource_pages/pdf.html' %}
+<br>
+{% include 'course_page/resource_pages/image.html' %}
+<br>
+{% include 'course_page/resource_pages/audio.html' %}
+<br>
+{% include 'course_page/resource_pages/video.html' %}
+<br>
+{% include 'course_page/resource_pages/youtube_link.html' %}
 </div>
 {% endblock %}

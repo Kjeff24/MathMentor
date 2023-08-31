@@ -20,7 +20,7 @@
                     <a href="{{resource.file.url}}" class="download-link text-dark btn btn-outline-primary btn-sm col-lg-2 col-sm-6 fs-6 mb-1" data-file-id="{{ resource.id }}" download
                     >Download</a>
                     {% endif %}
-                    <a href="{% url 'preview_pdf' resource.id %}#toolbar=0" class="text-dark btn btn-outline-primary btn-sm col-lg-2 col-sm-6 fs-6 mb-1" target="_blank">Preview</a>
+                    <!-- <a href="{% url 'preview_pdf' resource.id %}#toolbar=0" class="text-dark btn btn-outline-primary btn-sm col-lg-2 col-sm-6 fs-6 mb-1" target="_blank">Preview</a> -->
                     <a class="view text-dark btn btn-outline-primary btn-sm col-lg-2 col-sm-6 fs-6 mb-1">More info</a>
                 </div>
                 
@@ -29,20 +29,12 @@
                 <table class="table table-hover table-striped">
                     <tr>
                         <th>Title</th>
-                        <th>Created By</th>
                         <th>Creation Time</th>
                         <th>Last Modified Time</th>
                     </tr>
                     <tr>
                         <td>
                             {% if resource.name %} {{resource.name}} {% else %} N/A
-                            {% endif %}
-                        </td>
-                        <td>
-                            {% if course.instructor %}
-                            <p>{{course.instructor}}</p>
-                            {% else %}
-                            <p>N/A</p>
                             {% endif %}
                         </td>
                         <td>
