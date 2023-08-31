@@ -16,7 +16,11 @@ SECRET_KEY = 'django-insecure-c38s!c5@x)!b&+g#0@b$y(n^1yfs1#d54vy7bfi(zql88*uh98
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+DEBUG_PROPAGATE_EXCEPTIONS = False
+
+ALLOWED_HOSTS = ["*"]
+
+CSRF_TRUSTED_ORIGINS = ["*"]
 
 
 # Application definition
@@ -36,6 +40,7 @@ AUTH_USER_MODEL  = 'myapp.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -122,6 +127,8 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = BASE_DIR / 'static/media'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/staticfiles')
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Emailing settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
