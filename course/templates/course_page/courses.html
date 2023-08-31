@@ -1,10 +1,16 @@
 {% extends "main.html" %} {% load static %} {% block title %}Home{% endblock %} {% block content %}
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+<p>{{current_time}}</p>
+<div class="p-4">
+  <div class="row d-flex flex-column flex-md-row mt-3 gap-2 justify-content-between align-items-center" style="min-height: 70vh;">
+    {% for course in courses %}
+      <div class="card col-md-6" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{course.name}}</h5>
+          <p class="card-text">{{course.description}}</p>
+          <a href="#" class="btn btn-primary">Go to {{course.name}}</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
-</div>
 {% endblock %}

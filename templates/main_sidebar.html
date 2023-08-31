@@ -31,7 +31,7 @@
     </li>
     <li class="nav-item mb-5">
       <a
-        href="{% url 'courses' %}"
+        href="{% url 'courses' request.user.id %}"
         class="nav-link py-3 border-bottom text-dark"
         title="My Courses"
         data-bs-toggle="tooltip"
@@ -63,7 +63,7 @@
     </li>
     <li class="nav-item mb-5">
       <a
-      href="{% url 'past-questions' %}"
+      href="{% url 'past-questions' request.user.id %}"
         class="nav-link py-3 border-bottom text-dark {% if url_name == 'past-questions' %} active {% endif %}"
         title="Past Questions"
         data-bs-toggle="tooltip"
@@ -145,7 +145,7 @@
     </li>
     <li class="nav-item mb-5">
       <a
-        href="{% url 'courses' %}"
+        href="{% url 'courses' request.user.id %}"
         class="nav-link py-3 border-bottom {% if url_name == 'courses' %} active {% endif %}"
         title="My Courses"
         data-bs-toggle="tooltip"
@@ -175,7 +175,7 @@
     </li>
     <li class="nav-item mb-5">
       <a
-        href="{% url 'past-questions' %}"
+        href="{% url 'past-questions' request.user.id %}"
         class="nav-link py-3 border-bottom {% if url_name == 'past-questions' %} active {% endif %}"
         title="Pass Questions"
         data-bs-toggle="tooltip"

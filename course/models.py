@@ -18,8 +18,19 @@ class Course(models.Model):
     updated = models.DateField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.name}-{self.class_level}"
+    
 
+class Resource(models.Model):
+    name = models.CharField(max_length=30)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    description = models.TextField(max_length=50, blank=True, null=True)
+    file = models.FileField(upload_to='resources/', blank=True)
+    created  = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.name}-{self.course.class_level}"
 
 # Crate a quiz models
 class Quiz(models.Model):

@@ -1,3 +1,15 @@
 {% extends "main.html" %} {% load static %} {% block title %}Home{% endblock %} {% block content %}
+{% include 'course_page/pdf.html'  %}
+<script>
+            
+    // Display detailes in view
+    const view = document.querySelectorAll(".view");
+    const viewDetails = document.querySelectorAll(".view-details");
 
+    view.forEach((link, index) => {
+        link.addEventListener("click", function () {
+            viewDetails[index].classList.toggle("active");
+        });
+    });
+</script>
 {% endblock %}

@@ -10,8 +10,9 @@ urlpatterns = [
     path('learner_home/quiz/<course>/<pk>/data/', quiz.get_data_view, name='quiz_view'),
     path('learner_home/quiz/<course>/<pk>/save/', quiz.save_quiz_view, name='save-view'),
     path('course-page/dashboard', course_page.dashboard, name='dashboard'),
-    path('course-page/courses', course_page.courses, name='courses'),
-    path('course-page/message', course_page.chatMessage, name='chat-message'),
-    path('course-page/past-question', course_page.passQuestions, name='past-questions'),
+    path('course-page/courses/<pk>/', course_page.courses, name='courses'),
+    path('course-page/message/', course_page.chatMessage, name='chat-message'),
+    path('course-page/past-question/<pk>/', course_page.passQuestions, name='past-questions'),
+    path('course-page/past-question/preview_pdf/<int:pk>/', course_page.previewPdf, name='preview_pdf'),
     path('course-page/update-profile/<pk>', course_page.updateProfile, name='update-profile'),
 ]

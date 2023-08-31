@@ -13,6 +13,7 @@ class User(AbstractUser):
     class_level = models.CharField(max_length=10, blank=False, null=False)
     math_grade = models.CharField(max_length=10, blank=False, null=False)
     math_strength = models.CharField(max_length=10, blank=False, null=False)
+    has_preference = models.BooleanField("Has Preference",default=False)
     is_auditory_learner = models.BooleanField("Auditory Learner",default=False)
     is_visual_learner = models.BooleanField("Visual Learner",default=False)
     is_kinesthetic_learner = models.BooleanField("Kinesthetic Learner",default=False)

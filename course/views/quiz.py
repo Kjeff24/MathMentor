@@ -18,17 +18,22 @@ def quiz_list_view(request, course):
         result_count__lt=F('quiz_chances')
     )
     
-    filtered_quizzes = []
-    for quiz in quizzes:
-        if quiz.question_set.exists():  # Check if the quiz has questions
-            filtered_quizzes.append(quiz)
-    
-    context = {
-        'quizzes': filtered_quizzes,
-        'course': course,
-    }
-    
-    return render(request, 'learning_styles/quiz_list.html', context)
+    if not quizzes.exists():
+        user.has_preference = True
+        user.save()
+        return redirect('dashboard')
+    else:
+        filtered_quizzes = []
+        for quiz in quizzes:
+            if quiz.question_set.exists():  # Check if the quiz has questions
+                filtered_quizzes.append(quiz)
+        
+        context = {
+            'quizzes': filtered_quizzes,
+            'course': course,
+        }
+        
+        return render(request, 'learning_styles/quiz_list.html', context)
 
 
 def quiz_view(request, pk, course):

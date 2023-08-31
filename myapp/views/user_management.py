@@ -55,10 +55,11 @@ def signupPage(request):
 def loginPage(request):
     form = LoginForm(request.POST or None)
     context = {'form': form, 'page':'login'}
+    
 
     # if user is authenticated, redirect to home, when user tries to access login
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('dashboard')
 
     # Check if user is authenticated before login to home
     if request.method == 'POST':
@@ -71,9 +72,12 @@ def loginPage(request):
             #     messages.add_message(request, messages.ERROR,
             #                         'Email is not verified, please check your email inbox')
             #     return render(request, 'authenticate/login.html', context, status=401)
-            if user is not None:
+            if user is not None and not user.has_preference:
                 login(request, user)
                 return redirect('learner-home')
+            elif user is not None and user.has_preference:
+                login(request, user)
+                return redirect('dashboard')
             else:
                 messages.add_message(request, messages.ERROR,
                                  'Invalid credentials, try again')
