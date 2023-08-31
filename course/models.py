@@ -4,8 +4,15 @@ import random
 
 
 class Course(models.Model):
+    CLASS_LEVEL = (
+        ('JHS 1', 'JHS 1'),
+        ('JHS 2', 'JHS 2'),
+        ('JHS 3', 'JHS 3'),
+    )
+    
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
+    class_level = models.CharField(max_length=10, choices=CLASS_LEVEL, default="null", null=True, blank=True)
     instructor = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)

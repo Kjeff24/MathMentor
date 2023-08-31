@@ -1,15 +1,14 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
 from django.http import JsonResponse
 from course.models import Quiz, Question, Answer, Result
 from course.models import Course
 from django.db.models import F, Q, Count
+from myapp.models import User
 
 
 def quiz_list_view(request, course):
     user = request.user
     course = Course.objects.get(name=course)
-    print(course)
     # Filter quizzes that the user has not attempted more than quiz_chances times
     quizzes = Quiz.objects.filter(
         course=course
@@ -101,6 +100,19 @@ def save_quiz_view(request, pk, course):
         score_ = score * multiplier
         save_result = Result.objects.create(quiz=quiz, user=user, score=score_, completion_time=completionTime)
         save_result.save()
+        
+        if score_ >= quiz.required_score_to_pass:
+            if quiz.name == "Reading/Writing Learner":
+                user.is_read_write_learner = True
+            if quiz.name == "Kinesthetic Learner":
+                user.is_kinesthetic_learner = True
+            if quiz.name == "Auditory Learner":
+                user.is_auditory_learner = True
+            if quiz.name == "Visual Learner":
+                user.is_visual_learner = True
+            user.save()
+                
+            
 
         return redirect('quiz_list_view', course="LEARNING STYLE")
         

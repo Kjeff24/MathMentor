@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Content|Home</title>
+        <title>Course|{% block title %}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,12 +17,12 @@
             href="{% static 'css/bootstrap.min.css' %}"
         />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <!-- <link
+        <link
             rel="stylesheet"
             type="text/css"
             media="screen"
-            href="{% static 'css/employee_page.css' %}"
-        /> -->
+            href="{% static 'css/style.css' %}"
+        />
         {% if page == 'chat-room' %}
         <link
         rel="stylesheet"
@@ -35,10 +35,10 @@
         {% endblock %}
     </head>
     <body >
-        <div class="full-height employee-container">
+        <div class="full-height course-page-container">
             <div class="main-content-container">
                 <!-- Side bar -->
-                {% include 'main_side_bar.html' %}
+                {% include 'main_sidebar.html' %}
                 <!-- overview -->
                 <div class="content-page m-3">
                     {% block content %} {% endblock %}

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import learning_styles, quiz
+from .views import learning_styles, quiz, course_page
 
 
 urlpatterns = [
@@ -9,5 +9,9 @@ urlpatterns = [
     path('learner_home/quiz/<course>/<pk>/', quiz.quiz_view, name='quiz_view'),
     path('learner_home/quiz/<course>/<pk>/data/', quiz.get_data_view, name='quiz_view'),
     path('learner_home/quiz/<course>/<pk>/save/', quiz.save_quiz_view, name='save-view'),
-    # path('learner_home/quiz/<class_level>/save/', quiz.save_quiz_view, name='save-view'),
+    path('course-page/dashboard', course_page.dashboard, name='dashboard'),
+    path('course-page/courses', course_page.courses, name='courses'),
+    path('course-page/message', course_page.chatMessage, name='chat-message'),
+    path('course-page/past-question', course_page.passQuestions, name='past-questions'),
+    path('course-page/update-profile/<pk>', course_page.updateProfile, name='update-profile'),
 ]

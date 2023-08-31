@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import ModelForm
 from .models import User
 
 
@@ -76,3 +77,44 @@ class LoginForm(forms.Form):
         )
     )
 
+class UserForm(ModelForm):
+    """
+    Form for updating user information.
+
+    Provides fields for updating the user's first name, last name, username, bio, and avatar.
+    """
+    first_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control"
+            }
+        )
+    )
+
+    last_name = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control"
+            }
+        )
+    )
+
+    username = forms.CharField(
+        widget=forms.TextInput(
+            attrs={
+                "class": "form-control"
+            }
+        )
+    )
+
+    avatar = forms.ImageField(widget=forms.ClearableFileInput(attrs={'accept': 'image/*'}))
+    
+    date_of_birth = forms.DateField(label='Date of Birth', required=False, widget=forms.DateInput(attrs={'type': 'date'}))
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'username', 'date_of_birth', 'avatar']
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')  # Retrieve the 'user' argument from kwargs
+        super().__init__(*args, **kwargs)      

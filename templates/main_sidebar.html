@@ -1,9 +1,10 @@
 {% load static %}
 <div
-  class="side-bar side-bar-big flex-shrink-0 p-3 text-white"
-  style="background-color: #3f4156; width: 280px;"
+  class="side-bar side-bar-big flex-shrink-0 p-3 text-dark"
+  style="background-color: #009ffb56; width: 280px;"
 >
-  <a class="tools-button btn btn-outline-primary text-white">
+<span class="h3 fw-bold mb-0" style="color: #00A0FB;">MathMentor</span>
+  <a class="tools-button btn btn-outline-primary text-black">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
       <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
     </svg>
@@ -13,10 +14,10 @@
   <ul class="nav nav-pills flex-column">
     <li class="nav-item mb-5">
       <a
-       
-        class="nav-link py-3 border-bottom text-white {% if url_name == 'course' %} active {% endif %}"
+        href="{% url 'dashboard' %}"
+        class="nav-link py-3 border-bottom text-dark {% if url_name == 'dashboard' %} active {% endif %}"
         aria-current="page"
-        title="Overview"
+        title="Dashboard"
         data-bs-toggle="tooltip"
         data-bs-placement="right"
       >
@@ -25,71 +26,88 @@
           alt="Back"
           class="feather-icon icon-bar-1"
         />
-        Overview
+        Dashboard
       </a>
     </li>
     <li class="nav-item mb-5">
       <a
-        
-        class="nav-link py-3 border-bottom text-white {% if url_name == 'announcement' %} active {% endif %}"
-        title="Announcement"
+        href="{% url 'courses' %}"
+        class="nav-link py-3 border-bottom text-dark"
+        title="My Courses"
         data-bs-toggle="tooltip"
         data-bs-placement="right"
       >
         <img
-          src="{% static 'assets/bell.svg' %}"
+          src="{% static 'assets/book.svg' %}"
           alt="Back"
           class="feather-icon icon-bar-3"
         />
-        Announcement
+        My Courses
       </a>
     </li>
     <li class="nav-item mb-5">
       <a
-        
-        class="nav-link py-3 border-bottom text-white {% if url_name == 'resource' %} active {% endif %}"
-        title="Resources"
-        data-bs-toggle="tooltip"
-        data-bs-placement="right"
-      >
-        <img
-          src="{% static 'assets/archive.svg' %}"
-          alt="Back"
-          class="feather-icon icon-bar-4"
-        />
-        Resource
-      </a>
-    </li>
-    <li class="nav-item mb-5">
-      <a
-        
-        class="nav-link py-3 border-bottom text-white {% if url_name == 'quiz-page' %} active {% endif %}"
-        title="Quiz"
-        data-bs-toggle="tooltip"
-        data-bs-placement="right"
-      >
-        <img
-          src="{% static 'assets/quiz.svg' %}"
-          alt="Back"
-          class="feather-icon icon-bar-5"
-        />
-        Quiz
-      </a>
-    </li>
-    <li class="nav-item mb-5">
-      <a
-        
-        class="nav-link py-3 border-bottom text-white {% if url_name == 'room-page' %} active {% endif %}"
-        title="Chat Room"
+      href="{% url 'chat-message' %}"
+        class="nav-link py-3 border-bottom text-dark {% if url_name == 'chat-message' %} active {% endif %}"
+        title="Messages"
         data-bs-toggle="tooltip"
         data-bs-placement="right"
       >
         <img
           src="{% static 'assets/message.svg' %}"
           alt="Back"
+          class="feather-icon icon-bar-4"
+        />
+        Messages
+      </a>
+    </li>
+    <li class="nav-item mb-5">
+      <a
+      href="{% url 'past-questions' %}"
+        class="nav-link py-3 border-bottom text-dark {% if url_name == 'past-questions' %} active {% endif %}"
+        title="Past Questions"
+        data-bs-toggle="tooltip"
+        data-bs-placement="right"
+      >
+        <img
+          src="{% static 'assets/question.svg' %}"
+          alt="Back"
+          class="feather-icon icon-bar-5"
+        />
+        Past Questions
+      </a>
+    </li>
+    <li class="nav-item mb-5">
+      <a
+        href="{% url 'update-profile' pk=request.user.id %}"
+        class="nav-link py-3 border-bottom text-dark {% if url_name == 'update-profile' %} active {% endif %}"
+        title="Profile"
+        data-bs-toggle="tooltip"
+        data-bs-placement="right"
+      >
+        <img
+          src="{{request.user.avatar.url}}"
+          alt="Back"
+          class="feather-icon icon-bar-6"
+          style="width: 30px; border-radius: 50%"
+        />
+        Profile
+      </a>
+    </li>
+    <li class="nav-item mb-5">
+      <a
+        href="{% url 'logout' %}"
+        class="nav-link py-3 border-bottom text-dark"
+        title="logout"
+        data-bs-toggle="tooltip"
+        data-bs-placement="right"
+      >
+        <img
+          src="{% static 'assets/logout.svg' %}"
+          alt="Back"
           class="feather-icon icon-bar-6"
         />
-        Chat
+        Logout
       </a>
     </li>
   </ul>
@@ -98,9 +116,9 @@
 <!-- other side bar  -->
 <div
   class="side-bar side-bar-small flex-column flex-shrink-0"
-  style="background-color: #3f4156; width: 4.5rem;"
+  style="background-color: #009ffb56; width: 4.5rem;"
 >
-<a class="tools-button btn btn-outline-primary text-white">
+<a class="tools-button btn btn-outline-primary text-dark">
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
     <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
   </svg>
@@ -111,10 +129,10 @@
   <ul class="nav nav-pills nav-flush flex-column text-center">
     <li class="nav-item mb-5">
       <a
-        
-        class="nav-link py-3 border-bottom {% if url_name == 'course' %} active {% endif %}"
+        href="{% url 'dashboard' %}"
+        class="nav-link py-3 border-bottom {% if url_name == 'dashboard' %} active {% endif %}"
         aria-current="page"
-        title="Overview"
+        title="Dashboard"
         data-bs-toggle="tooltip"
         data-bs-placement="right"
       >
@@ -127,14 +145,14 @@
     </li>
     <li class="nav-item mb-5">
       <a
-        
-        class="nav-link py-3 border-bottom {% if url_name == 'announcement' %} active {% endif %}"
-        title="Announcement"
+        href="{% url 'courses' %}"
+        class="nav-link py-3 border-bottom {% if url_name == 'courses' %} active {% endif %}"
+        title="My Courses"
         data-bs-toggle="tooltip"
         data-bs-placement="right"
       >
         <img
-          src="{% static 'assets/bell.svg' %}"
+          src="{% static 'assets/book.svg' %}"
           alt="Back"
           class="feather-icon icon-bar-3"
         />
@@ -142,14 +160,14 @@
     </li>
     <li class="nav-item mb-5">
       <a
-        
-        class="nav-link py-3 border-bottom {% if url_name == 'resource' %} active {% endif %}"
-        title="Resources"
+        href="{% url 'chat-message' %}"
+        class="nav-link py-3 border-bottom {% if url_name == 'chat-message' %} active {% endif %}"
+        title="Messages"
         data-bs-toggle="tooltip"
         data-bs-placement="right"
       >
         <img
-          src="{% static 'assets/archive.svg' %}"
+          src="{% static 'assets/message.svg' %}"
           alt="Back"
           class="feather-icon icon-bar-4"
         />
@@ -157,14 +175,14 @@
     </li>
     <li class="nav-item mb-5">
       <a
-       
-        class="nav-link py-3 border-bottom {% if url_name == 'quiz-page' %} active {% endif %}"
-        title="Quiz"
+        href="{% url 'past-questions' %}"
+        class="nav-link py-3 border-bottom {% if url_name == 'past-questions' %} active {% endif %}"
+        title="Pass Questions"
         data-bs-toggle="tooltip"
         data-bs-placement="right"
       >
         <img
-          src="{% static 'assets/quiz.svg' %}"
+          src="{% static 'assets/question.svg' %}"
           alt="Back"
           class="feather-icon icon-bar-5"
         />
@@ -172,14 +190,30 @@
     </li>
     <li class="nav-item mb-5">
       <a
-        
-        class="nav-link py-3 border-bottom {% if url_name == 'room-page' %} active {% endif %}"
-        title="Chat Room"
+        href="{% url 'update-profile' request.user.id %}"
+        class="nav-link py-3 border-bottom {% if url_name == 'update-profile' %} active {% endif %}"
+        title="Profile"
         data-bs-toggle="tooltip"
         data-bs-placement="right"
       >
         <img
-          src="{% static 'assets/message.svg' %}"
+          src="{{request.user.avatar.url}}"
+          alt="Back"
+          class="feather-icon icon-bar-6"
+          style="width: 30px; border-radius: 50%"
+        />
+      </a>
+    </li>
+    <li class="nav-item mb-5">
+      <a
+        href="{% url 'logout' %}"
+        class="nav-link py-3 border-bottom {% if url_name == 'room-page' %} active {% endif %}"
+        title="Logout"
+        data-bs-toggle="tooltip"
+        data-bs-placement="right"
+      >
+        <img
+          src="{% static 'assets/logout.svg' %}"
           alt="Back"
           class="feather-icon icon-bar-6"
         />

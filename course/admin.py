@@ -16,7 +16,14 @@ class QuestionAdmin(admin.ModelAdmin):
     """
     inlines = [AnswerInline]
     
+class CourseAdmin(admin.ModelAdmin):
+    exclude = ('instructor',)
+    def save_model(self, request, obj, form, change):
+        if not obj.pk:
+            obj.instructor = request.user  # Set the instructor as the currently logged-in user
+        super().save_model(request, obj, form, change)
+    
 admin.site.register(Quiz)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Result)
-admin.site.register(Course)
+admin.site.register(Course, CourseAdmin)
