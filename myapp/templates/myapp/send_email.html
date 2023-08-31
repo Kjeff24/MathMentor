@@ -1,0 +1,16 @@
+{% autoescape off %}
+
+{% if user.username %}
+Hi {{user.username}}
+
+Please attached is the file you requested.
+{% else  %}
+Hi there,
+
+Please attached is the file sent from {{from_user}}.
+{% endif  %}
+
+Signup to MathMentor to get access to our resources : https://kjeff24.pythonanywhere.com/
+
+
+{% endautoescape %}

@@ -1,0 +1,21 @@
+{% extends "front_page.html" %} {% load static %} {% block content %}
+<div class="home-bg vh-100">
+  <div
+    class="d-flex justify-content-center align-items-center"
+    style="min-height: 100vh"
+  >
+    <div class="m-auto">
+      <h1 class="text-center fw-bold" style="color: #00a0fb">MathMentor</h1>
+      <p class="text-center text-white" style="max-width: 700px">
+        MathMentor is an online school system for upper primary level students
+        in Ghana to help them with their studies in relation to mathematics.The
+        system follows the syllabus of GES.
+      </p>
+      <div class="d-flex justify-content-center gap-2">
+        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+        <a href="{% url 'signup' %}" class="btn btn-primary">Signup</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

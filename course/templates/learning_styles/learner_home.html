@@ -1,0 +1,17 @@
+{% extends "front_page.html" %} {% load static %} {% block content %}
+<div class="learner-home vh-100 container-fluid">
+    <div class="p-2">
+        <h1>Welcome {{request.user}}</h1>
+    </div>
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 50vh">
+        <h2>FOR EFFECTIVE LEARNING ANSWER THE FOLLOWING QUESTIONS</h2>
+    </div>
+    <div class="position-absolute bottom-0 end-0 p-3">
+        {% if user.class_level and user.math_grade and user.math_strength %}
+        <a class="btn btn-primary" href="{% url 'quiz_list_view' course='LEARNING STYLE' %}" role="button">Next</a>
+        {% else %}
+        <a class="btn btn-primary" href="{% url 'class-form' %}" role="button">Proceed</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
