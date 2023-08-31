@@ -1,0 +1,26 @@
+{% extends "main.html" %} {% load static %} {% block title %}Courses{% endblock %} {% block content %}
+<p>{{current_time}}</p>
+<div class="p-4">
+    <h1 class="text-center">Congratulations🎊🎊 on being determined as a virtual Learner. </h1>
+    <h2>Down below is your lesson plan</h2>
+    <ol>
+        {% for course_data in courses_data %}
+        <li class="fw-bold h2 pt-3">{{ course_data.course_item }}</li>
+        <h3>Requirements:</h3>
+        <ul>
+            {% for requirement in course_data.requirement_list %}
+            <li>{{ requirement }}</li>
+            {% endfor %}
+        </ul>
+        <h3>Curriculum:</h3>
+        <ul>
+            {% for curriculum_item in course_data.curriculum_list %}
+            <li>{{ curriculum_item }}</li>
+            {% endfor %}
+        </ul>
+        
+        {% endfor %}
+    </ol>
+    <a href="{% url 'courses' request.user.id %}" class="btn btn-primary">Click here to visit all the courses</a>
+</div>
+{% endblock %}

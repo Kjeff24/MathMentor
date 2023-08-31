@@ -46,9 +46,31 @@ def courseContent(request, pk):
     return render(request, "course_page/programme.html", context)
 
 
+def lessonPlan(request, pk):
+    user = User.objects.get(id=pk)
+    courses = Course.objects.filter(class_level=user.class_level)
+    current_time = timezone.now()
+    user = User.objects.get(id=pk)
+    
+    courses_data = []
+    for course_item in courses:
+        curriculum_list = json.loads(course_item.curriculum.replace("'", "\""))
+        requirement_list = json.loads(course_item.requirements.replace("'", "\""))
+        courses_data.append({
+            'course_item': str(course_item),
+            'curriculum_list': curriculum_list,
+            'requirement_list': requirement_list
+        })
+        
+    context ={
+        'current_time': current_time,
+        'courses_data': courses_data
+    }
+    return render(request, "course_page/lesson_plan.html", context)
+
 def chatMessage(request):
     context ={
-    'page': 'chat-message'
+    'page': 'chat-message',
     }
     return render(request, "course_page/message.html", context)
 
