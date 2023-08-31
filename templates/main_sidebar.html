@@ -32,7 +32,8 @@
     <li class="nav-item mb-5">
       <a
         href="{% url 'courses' request.user.id %}"
-        class="nav-link py-3 border-bottom text-dark {% if url_name == 'courses' %} active {% endif %}"
+        class="nav-link py-3 border-bottom text-dark {% if url_name == 'courses' or url_name == 'course-content' or url_name == 'lesson-plan' %}
+        active {% endif %}"
         title="My Courses"
         data-bs-toggle="tooltip"
         data-bs-placement="right"
@@ -59,6 +60,22 @@
           class="feather-icon icon-bar-3"
         />
         Resources
+      </a>
+    </li>
+    <li class="nav-item mb-5">
+      <a
+        href="{% url 'course-quiz' request.user.id %}"
+        class="nav-link py-3 border-bottom text-dark {% if url_name == 'course-quiz' %} active {% endif %}"
+        title="Quizzes"
+        data-bs-toggle="tooltip"
+        data-bs-placement="right"
+      >
+        <img
+          src="{% static 'assets/quiz.svg' %}"
+          alt="Back"
+          class="feather-icon icon-bar-3"
+        />
+        Quizzes
       </a>
     </li>
     <li class="nav-item mb-5">
@@ -162,7 +179,8 @@
     <li class="nav-item mb-5">
       <a
         href="{% url 'courses' request.user.id %}"
-        class="nav-link py-3 border-bottom {% if url_name == 'courses' %} active {% endif %}"
+        class="nav-link py-3 border-bottom {% if url_name == 'courses' or url_name == 'course-content' or url_name == 'lesson-plan' %}
+        active {% endif %}"
         title="My Courses"
         data-bs-toggle="tooltip"
         data-bs-placement="right"
@@ -184,6 +202,21 @@
       >
         <img
           src="{% static 'assets/tools.svg' %}"
+          alt="Back"
+          class="feather-icon icon-bar-3"
+        />
+      </a>
+    </li>
+    <li class="nav-item mb-5">
+      <a
+        href="{% url 'course-quiz' request.user.id %}"
+        class="nav-link py-3 border-bottom {% if url_name == 'course-quiz' %} active {% endif %}"
+        title="Quizzes"
+        data-bs-toggle="tooltip"
+        data-bs-placement="right"
+      >
+        <img
+          src="{% static 'assets/quiz.svg' %}"
           alt="Back"
           class="feather-icon icon-bar-3"
         />

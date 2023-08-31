@@ -30,17 +30,19 @@ def quiz_list_view(request, pk2):
     context = {
         'quizzes': filtered_quizzes,
         'course': course,
+        'page':'course_quiz',
     }
     
-    return render(request, 'quiz/main.html', context)
+    return render(request, 'learning_styles/quiz_list.html', context)
 
 
 def quiz_view(request, pk, pk2):
+    
     quiz = Quiz.objects.get(pk=pk)
     course = Course.objects.get(id=pk2)
     
-    context = {'obj': quiz, 'course': course, 'page':'quiz_page' }
-    return render(request, 'quiz/quiz.html', context)
+    context = {'obj': quiz, 'course': course, 'page':'course_quiz' }
+    return render(request, 'learning_styles/quiz.html', context)
     
 
 

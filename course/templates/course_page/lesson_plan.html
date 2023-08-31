@@ -1,8 +1,13 @@
 {% extends "main.html" %} {% load static %} {% block title %}Courses{% endblock %} {% block content %}
 <p>{{current_time}}</p>
 <div class="p-4">
-    <h1 class="text-center">Congratulations🎊🎊 on being determined as a virtual Learner. </h1>
-    <h2>Down below is your lesson plan</h2>
+    <h1 class="text-center" style="text-decoration: underline;">Congratulations🎊🎊 on being determined as a  
+        {% if request.user.is_auditory_learner %}auditory learner/{% endif %}
+        {% if request.user.is_visual_learner %}visal learner/{% endif %}
+        {% if request.user.is_kinesthetic_learner %}kinesthetic learner/{% endif %}
+        {% if request.user.is_read_write_learner %}read/write learner{% endif %}
+    </h1>
+    <h3>Down below is your lesson plan</h3>
     <ol>
         {% for course_data in courses_data %}
         <li class="fw-bold h2 pt-3">{{ course_data.course_item }}</li>

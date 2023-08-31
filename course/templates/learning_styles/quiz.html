@@ -2,7 +2,11 @@
 {% load static %}
 
 {% block scripts %}
+    {% if page == 'course_quiz' %}
+    <script src="{% static 'js/course_quiz.js' %}" defer></script> 
+    {% else %}
     <script src="{% static 'js/quiz.js' %}" defer></script> 
+    {% endif %}
     
 {% endblock scripts %}
 

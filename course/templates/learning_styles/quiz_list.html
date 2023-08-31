@@ -30,7 +30,11 @@ home
   </div>
 </div>
 
+{% if page == 'course_quiz' %}
+<div class="h1">Take All Quizzes</div>
+{% else %}
 <div class="h1">Take All Quizzes In order To Know Your Learning Style</div>
+{% endif %}
 <hr>
 {% if quizzes %}
 {% for obj in quizzes %}

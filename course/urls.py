@@ -19,9 +19,9 @@ urlpatterns = [
     path('course-page/past-question/', course_page.passQuestions, name='past-questions'),
     path('course-page/past-question/preview_pdf/<int:pk>/', course_page.previewPdf, name='preview_pdf'),
     path('course-page/update-profile/<pk>', course_page.updateProfile, name='update-profile'),
-    
-    path('course-page/quiz/<course>/', course_quiz.quiz_list_view, name='quiz_list_view_course'),
-    path('course-page/quiz/<course>/<pk>/', course_quiz.quiz_view, name='quiz_view_course'),
-    path('course-page/quiz/<course>/<pk>/data/', course_quiz.quiz_data_view, name='quiz_view_course'),
-    path('course-page/quiz/<course>/<pk>/save/', course_quiz.save_quiz_view, name='save-view_course'),
+    path('course-page/quiz-page/<pk>/', course_page.courseQuiz, name='course-quiz'),
+    path('course-page/quiz/<pk2>/', course_quiz.quiz_list_view, name='quiz_list_view_course'),
+    path('course-page/quiz/<pk2>/<pk>/', course_quiz.quiz_view, name='quiz_view_course'),
+    path('course-page/quiz/<pk2>/<pk>/data/', course_quiz.quiz_data_view, name='quiz_view_course'),
+    path('course-page/quiz/<pk2>/<pk>/save/', course_quiz.save_quiz_view, name='save-view_course'),
 ]

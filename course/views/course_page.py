@@ -5,7 +5,7 @@ from django.contrib import messages
 from myapp.forms import UserForm
 from datetime import datetime
 from django.utils import timezone
-from course.models import Course, PastQuestion, Resource
+from course.models import Course, PastQuestion, Resource, Result
 from myapp.models import User
 from urllib.parse import urlencode
 from django.http import StreamingHttpResponse
@@ -62,7 +62,6 @@ def courseContent(request, pk):
             course__in=courses
         ).order_by('-updated')
         
-    print(resources)
     context = {
         **resources,
         'course':course,
@@ -184,7 +183,13 @@ def updateProfile(request, pk):
     return render(request, "course_page/update_profile.html", context)
 
 
-def courseQuiz(request):
-    
-    return render(request, "learning_styles/quiz_list.html")
+def courseQuiz(request, pk):
+    user = User.objects.get(id=pk)
+    courses = Course.objects.filter(class_level=user.class_level)
+    user_results = Result.objects.filter(user=user).order_by('-created')
+    context = {
+        'courses':courses,
+        'user_results': user_results
+    }
+    return render(request, "course_page/quiz_page.html", context)
     
