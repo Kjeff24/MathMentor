@@ -12,8 +12,12 @@ class Course(models.Model):
     
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
+    heading = models.TextField()
     class_level = models.CharField(max_length=10, choices=CLASS_LEVEL, default="null", null=True, blank=True)
     instructor = models.ForeignKey(User, on_delete=models.CASCADE)
+    version = models.CharField(max_length=50, null=True, blank=True)
+    requirements = models.TextField(null=True, blank=True)  # Storing requirements as comma-separated values
+    curriculum = models.TextField(null=True, blank=True) 
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
 

@@ -1,0 +1,36 @@
+{% extends "main.html" %} {% load static %} {% block title %}{{course.name}}{% endblock %} {% block content %}
+<div class="container-fluid">
+  <div class="row intro text-center">
+    <h2 style="text-decoration: underline;" class="fw-bold">{{course.heading}}</h2>
+    <h4>Version {{course.version}}</h4>
+    <h4>Instructor: {{ course.instructor.username }}</h4>
+  </div>
+</div>
+<div class="container-fluid" style="margin-top: 20px">
+  <div class="row mx-auto">
+    <div class="col-md-4">
+      <h3 class="fw-bold">Description</h3>
+      <p>{{course.description}}</p>
+    </div>
+    <div class="col-md-4">
+      <h3 class="fw-bold">This course includes:</h3>
+      <ul>
+        {% for item in curriculum_list %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h3 class="fw-bold">Requirements</h3>
+      <ul>
+        {% for item in requirement_list %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container-fluid py-3 mx-auto">
+  {% include 'course_page/pdf.html' %}
+</div>
+{% endblock %}

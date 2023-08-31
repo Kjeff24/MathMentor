@@ -9,6 +9,7 @@ from course.models import Course, Resource
 from myapp.models import User
 from urllib.parse import urlencode
 from django.http import StreamingHttpResponse
+import json
 
 def dashboard(request):
     current_time = timezone.now()
@@ -28,6 +29,22 @@ def courses(request, pk):
         'current_time': current_time
     }
     return render(request, "course_page/courses.html", context)
+
+def courseContent(request, pk):
+    current_time = timezone.now()
+    course = Course.objects.get(id=pk)
+    resources = Resource.objects.filter(course=course)
+    curriculum_list = json.loads(course.curriculum.replace("'", "\""))
+    requirement_list = json.loads(course.requirements.replace("'", "\""))
+    context = {
+        'pdf_files':resources,
+        'course':course,
+        'current_time': current_time,
+        'curriculum_list': curriculum_list,
+        'requirement_list': requirement_list,
+    }
+    return render(request, "course_page/programme.html", context)
+
 
 def chatMessage(request):
     context ={
