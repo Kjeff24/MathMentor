@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp.apps.MyappConfig',
     'course.apps.CourseConfig',
+    'chatbot.apps.ChatbotConfig',
 ]
 
 AUTH_USER_MODEL  = 'myapp.User'

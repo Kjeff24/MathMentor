@@ -30,8 +30,10 @@ def courses(request, pk):
     return render(request, "course_page/courses.html", context)
 
 def chatMessage(request):
-    
-    return render(request, "course_page/message.html")
+    context ={
+    'page': 'chat-message'
+    }
+    return render(request, "course_page/message.html", context)
 
 
 def passQuestions(request, pk):

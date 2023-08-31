@@ -1,3 +1,4 @@
+console.log("chatbnot")
 class Chatbox {
     constructor() {
       this.args = {
