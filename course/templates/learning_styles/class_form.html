@@ -6,29 +6,14 @@
     <div class="d-flex justify-content-center align-items-center" style="min-height: 50vh">
         <form method="POST">
             {% csrf_token %}
-            <ol>
-                <li class="h2 p-3">What is your current class?</li>
-                <select name="class_level" class="p-2 col-md-6 col-sm-6" style="min-width: 200px;">
-                    <option value="JHS 1">JHS 1</option>
-                    <option value="JHS 2">JHS 2</option>
-                    <option value="JHS 3">JHS 3</option>
-                </select>
-                <li class="h2 p-3">What is your current grade in mathematics?</li>
-                <select name="math_grade" class="p-2 col-md-6 col-sm-6" style="min-width: 200px;">
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="C">C</option>
-                    <option value="D">D</option>
-                    <option value="E">E</option>
-                    <option value="F">F</option>
-                </select>
-                <li class="h2 p-3">What is your current  level you belong to.?</li>
-                <select name="math_strength" class="p-2 col-md-6 col-sm-6" style="min-width: 200px;">
-                    <option value="STRONG">STRONG</option>
-                    <option value="AVERAGE">AVERAGE</option>
-                    <option value="WEAK">WEAK</option>
-                </select>
-            </ol>
+                <h2 class=" p-3 text-center">What is your current class?</h2>
+                <div class="d-flex justify-content-center align-items-center">
+                    <select name="class_level" class="p-2 col-md-6 col-sm-6" style="min-width: 200px;">
+                        <option value="JHS 1">JHS 1</option>
+                        <option value="JHS 2">JHS 2</option>
+                        <option value="JHS 3">JHS 3</option>
+                    </select>
+                </div>
             <div class="position-absolute bottom-0 end-0 p-3">
                 <input class="btn btn-primary" type="submit" value="Next">
             </div>

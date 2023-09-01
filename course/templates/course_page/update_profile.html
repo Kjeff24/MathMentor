@@ -14,6 +14,15 @@ style="background-color: #ffffff"
           <h4 class="text-center fw-bold mb-3 signup-heading">
             Update User Information
           </h4>
+          <h5 class="text-center"><span class="fw-bold">Type of Learner: </span>
+            <span>
+              {% if request.user.is_auditory_learner %}auditory learner/{% endif %}
+              {% if request.user.is_visual_learner %}visal learner/{% endif %}
+              {% if request.user.is_kinesthetic_learner %}kinesthetic learner/{% endif %}
+              {% if request.user.is_read_write_learner %}read/write learner{% endif %}
+            </span>   
+          </h5>
+          <h5 class="text-center"><span class="fw-bold">Class Level: </span>{{request.user.class_level}}</h5>
           <div class="d-flex justify-content-center p-3">
               <img
                     src="{{request.user.avatar.url}}"

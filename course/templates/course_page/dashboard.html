@@ -4,6 +4,15 @@
 <div class="p-4">
   <div>
     <h3>Welcome, {{request.user.first_name}}</h3>
+    <h5><span class="fw-bold">Type of Learner: </span>
+      <span>
+        {% if request.user.is_auditory_learner %}auditory learner/{% endif %}
+        {% if request.user.is_visual_learner %}visal learner/{% endif %}
+        {% if request.user.is_kinesthetic_learner %}kinesthetic learner/{% endif %}
+        {% if request.user.is_read_write_learner %}read/write learner{% endif %}
+      </span>   
+    </h5>
+    <h5><span class="fw-bold">Class Level: </span>{{request.user.class_level}}</h5>
   </div>
   <div class="d-flex flex-column flex-md-row mt-3 gap-2 justify-content-between align-items-center" style="min-height: 70vh;">
     <a href="{% url 'chat-message' %}" class="text-decoration-none text-dark">
